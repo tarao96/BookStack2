@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
+use App\Models\Comment;
+use App\Models\BookMark;
 
 class PostController extends Controller
 {
@@ -71,8 +73,10 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $post_points = Post::find($id,['point1','point2','point3','point4','point5'])->toArray();
+        $comments = Comment::orderBy('created_at', 'desc')->get();
+        $bookmark = BookMark::where('post_id', $id);
         
-        return view('posts.show', compact('post','post_points'));
+        return view('posts.show', compact('post','post_points', 'comments', 'bookmark'));
     }
 
     /**
@@ -116,6 +120,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $post->bookmarks()->detach();
+        
         if($post->delete()){
             return redirect()
                     ->route('posts.index')

@@ -8,25 +8,6 @@ use App\Models\Comment;
 
 class CommentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -36,18 +17,21 @@ class CommentController extends Controller
      */
     public function store(StoreCommentRequest $request)
     {
-        //
-    }
+        $comment = new Comment;
+        $comment->body = $request->body;
+        $comment->post_id = $request->post_id;
+        $comment->user_id = $request->user_id;
+        $comment->save();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Comment $comment)
-    {
-        //
+        if($comment){
+            return redirect()
+                ->back()
+                ->with('flash_message', 'コメントを投稿しました');
+        } else {
+            return redirect()
+                ->back()
+                ->with('flash_message', 'コメントの投稿に失敗しました');
+        }
     }
 
     /**
@@ -56,9 +40,11 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comment $comment)
+    public function edit(int $id)
     {
-        //
+        $comment = Comment::findORFail($id);
+
+        return view('comments.edit', compact('comment'));
     }
 
     /**
@@ -81,6 +67,15 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        if($comment->delete())
+        {
+            return redirect()
+                    ->back()
+                    ->with('flash_message', 'コメントを削除しました');
+        } else {
+            return redirect()
+                    ->back()
+                    ->with('flash_message', 'コメントを削除しました');
+        }
     }
 }

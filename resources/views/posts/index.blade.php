@@ -11,7 +11,7 @@
                         <img class="card-img-top" src="{{ Storage::url($post->file_name) }}" alt=" ">
                         <div class="card-body">
                             <h5 class="card-title">{!! link_to_route('posts.show', $post->title, $post) !!}</h5>
-                            <p class="card-text text-truncate">{{ $post->thoughts }}</p>
+                            <p class="card-text text-truncate" style="max-width: 300px;">{{ $post->thoughts }}</p>
                         </div>
                     </div>
                 @endforeach

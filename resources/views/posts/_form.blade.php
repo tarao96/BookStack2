@@ -9,6 +9,7 @@
     <label for="file_name">画像ファイル</label>
     <div class="col-sm-10">
         <input type="file" name="file_name" class="form-control" accept="image/png, image/jpeg">
+        <p>※ファイルサイズは2MBまでになります</p>
     </div>
 </div>
 
@@ -16,7 +17,7 @@
 <div class="form-group row mt-3">
     <label for="point{{ $i }}">ポイント{{ $i }}</label>
     <div class="col-sm-10">
-        <textarea name="point{{ $i }}" class="form-control">{{ old('point$i') }}</textarea>
+        <textarea name="point{{ $i }}" class="form-control" style="height: 100px;">{{ old('point$i') }}</textarea>
     </div>
 </div>
 @endfor

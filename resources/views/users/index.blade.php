@@ -6,10 +6,10 @@
                 <p>表示するユーザーがいません</p>
             @else
                 @foreach($users as $user)
-                    <div class="card">
+                    <div class="card mt-3" style="width: 700px;">
                         <div class="card-body">
-                            <img src="{{ asset('storage/images/'.$user->user_image) }}" alt=" " class="mb-3" style="border-radius: 50%; width: 50px;">
-                            <h5 class="card-title">{!! link_to_route('users.show', $user->name, $user) !!}</h5>
+                            <img src="{{ asset('storage/images/'.$user->user_image) }}" alt=" " style="border-radius: 50%; width: 50px;">
+                            {!! link_to_route('users.show', $user->name, $user, ['class' => 'text-secondary text-decoration-none h5']) !!}
                         </div>
                     </div>          
                 @endforeach

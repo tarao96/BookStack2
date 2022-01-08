@@ -25,8 +25,17 @@ class StorePostRequest extends FormRequest
     {
         return [
             'title' => 'required|max:30',
-            'file_name' => 'image',
+            'file_name' => 'required|image|max:8000',
             'point1' => 'required|max:255'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            "required" => "必須項目です",
+            "image" => "指定されたファイルが画像ではありません",
+            "max" => "1Mを超えています"
         ];
     }
 }

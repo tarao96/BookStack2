@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'PostController@index')->name('home');
 Route::resource('posts', 'PostController');
 Route::resource('users', 'UserController')->except(['create', 'store']);
-Route::resource('comments', 'CommentController')->only(['store','update','destroy']);
+Route::resource('comments', 'CommentController')->only(['edit', 'store','update','destroy']);
+Route::resource('bookmarks', 'BookMarkController')->only(['store', 'destroy']);
 
 Auth::routes();
 

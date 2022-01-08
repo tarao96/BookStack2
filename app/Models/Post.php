@@ -22,7 +22,18 @@ class Post extends Model
         });
     }
 
-    public function user() {
+    public function user() 
+    {
         return $this->belongsTo(User::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function bookmarks()
+    {
+        return $this->belongsToMany(Post::class, 'book_marks', 'post_id', 'user_id');
     }
 }
