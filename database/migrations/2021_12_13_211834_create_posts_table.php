@@ -22,6 +22,11 @@ class CreatePostsTable extends Migration
             $table->text('point3')->nullable();
             $table->text('point4')->nullable();
             $table->text('point5')->nullable();
+            $table->text('content1')->nullable();
+            $table->text('content2')->nullable();
+            $table->text('content3')->nullable();
+            $table->text('content4')->nullable();
+            $table->text('content5')->nullable();
             $table->text('thoughts')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();

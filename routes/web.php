@@ -21,4 +21,4 @@ Route::resource('bookmarks', 'BookMarkController')->only(['store', 'destroy']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\PostController::class, 'index'])->name('home');

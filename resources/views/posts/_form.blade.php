@@ -14,18 +14,22 @@
 </div>
 
 @for ($i = 1; $i < 6; $i++)
-<div class="form-group row mt-3">
+<div class="form-group row post-form-group" style="margin-top: 50px;">
     <label for="point{{ $i }}">ポイント{{ $i }}</label>
     <div class="col-sm-10">
-        <textarea name="point{{ $i }}" class="form-control" style="height: 100px;">{{ old('point$i') }}</textarea>
+        <input type="text" name="point{{ $i }}" class="form-control" value="{{ old('point$i') }}">
+    </div>
+    <label for="content{{ $i }}">内容</label>
+    <div class="col-sm-10">
+        <textarea name="content{{ $i }}" class="form-control" style="height: 300px;">{{ old('content$i') }}</textarea>
     </div>
 </div>
 @endfor
 
-<div class="form-group row mt-3">
-    <label for="thoughts">感想</label>
+<div class="form-group row" style="margin-top: 30px;">
+    <label for="thoughts">感想・まとめ</label>
     <div class="col-sm-10">
-        <textarea name="thoughts" class="form-control">{{ old('thoughts') }}</textarea>
+        <textarea name="thoughts" class="form-control" style="height: 300px;">{{ old('thoughts') }}</textarea>
     </div>
 </div>
 

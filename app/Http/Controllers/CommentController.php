@@ -56,7 +56,18 @@ class CommentController extends Controller
      */
     public function update(UpdateCommentRequest $request, Comment $comment)
     {
-        //
+        $comment_post = $request->comment_post_id; 
+
+        if($comment->update($request->all()))
+        {
+            return redirect()
+                    ->route('posts.show', $comment_post)
+                    ->with('flash_message', 'コメントを更新しました');
+        } else {
+            return redirect()
+                        ->route('posts.show', $comment_post)
+                        ->with('flash_message', 'コメントの更新に失敗しました');
+        }
     }
 
     /**

@@ -9,7 +9,7 @@ class Post extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'title', 'file_name', 'point1', 'point2', 'point3', 'point4', 'point5', 'thoughts'
+        'title', 'file_name', 'point1', 'point2', 'point3', 'point4', 'point5', 'content1', 'content2', 'content3', 'content4', 'content5','thoughts'
     ];
 
     protected static function boot()

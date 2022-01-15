@@ -1,0 +1,53 @@
+a {
+    color: gray;
+    text-decoration: none;
+}
+
+.point {
+    border-radius: 5px;
+    background-color: #50bde4;
+    padding: 10px 5px 5px 5px;
+    color: white;
+}
+
+.content {
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+.content-wrapper {
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.thought-wrapper {
+    margin-top: 20px;
+}
+
+.user_icon {
+    border-radius: 50%; 
+    width: 100px;
+}
+
+.user_small_icon {
+    border-radius: 50%; 
+    width: 50px;
+}
+
+#navbarDropdown {
+    margin-right: 20px;
+}
+
+#post_show_img {
+    width: 500px; 
+    margin-left: 150px;
+}
+
+.post-form-group {
+    margin-top: 50px;
+}
+
+.post-form-group:first-child {
+    margin-top: 0;
+}

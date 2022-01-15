@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateUserRequest extends FormRequest
 {
@@ -23,8 +24,18 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $validate = [
+            'name' => ['required', 'string', 'max:255', Rule::unique('users')->ignore($this->user)],
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string'
         ];
+
+        // 更新時はパスワード必須ではない
+        if($this->isMethod('put'))
+        {
+            $validate['password'] = 'nullable|string';
+        }
+
+        return $validate;
     }
 }

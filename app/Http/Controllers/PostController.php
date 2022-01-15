@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Pagination\Paginator;
 use App\Models\Post;
 use App\Models\Comment;
 use App\Models\BookMark;
@@ -17,7 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::orderBy('created_at', 'desc')->paginate(16);
         return view('posts.index', compact('posts'));
     }
 
@@ -72,11 +73,16 @@ class PostController extends Controller
     public function show(int $id)
     {
         $post = Post::findOrFail($id);
-        $post_points = Post::find($id,['point1','point2','point3','point4','point5'])->toArray();
+        $post_points = Post::find($id,['point1', 'point2', 'point3', 'point4', 'point5', 'content1', 'content2', 'content3', 'content4', 'content5', ])->toArray();
+        $post_arrays = [['point'=>$post_points['point1'], 'content'=>$post_points['content1']],
+                        ['point'=>$post_points['point2'], 'content'=>$post_points['content2']],
+                        ['point'=>$post_points['point3'], 'content'=>$post_points['content3']],
+                        ['point'=>$post_points['point4'], 'content'=>$post_points['content4']],
+                        ['point'=>$post_points['point5'], 'content'=>$post_points['content5']]];
         $comments = Comment::orderBy('created_at', 'desc')->get();
         $bookmark = BookMark::where('post_id', $id);
         
-        return view('posts.show', compact('post','post_points', 'comments', 'bookmark'));
+        return view('posts.show', compact('post','post_points', 'post_arrays','comments', 'bookmark'));
     }
 
     /**

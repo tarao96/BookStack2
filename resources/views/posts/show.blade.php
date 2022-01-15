@@ -4,21 +4,31 @@
 <div class="card mx-auto" style="width: 900px;">
     <h5 class="card-header p-3">タイトル: {{ $post->title }}</h5>
     <div class="card-body">
-        <img class="card-img-top" src="{{ Storage::url($post->file_name) }}" alt=" " style="width: 500px; margin-left: 150px;">
-        <h5 class="card-title">投稿者: {{ $post->user->name }}</h5>
+        @if($post->file_name)
+            <img class="card-img-top" id="post_show_img" src="{{ Storage::url($post->file_name) }}" alt=" ">
+        @else
+            <img class="card-img-top" id="post_show_img" src="../../../sincerely-media-CXYPfveiuis-unsplash.jpg" alt=" ">
+        @endif
+        <h5 class="card-title" style="margin-left: 30px; margin-top: 30px;">投稿者: {{ $post->user->name }}</h5>
         <div class="card-body">
         @if($post_points)
-            @foreach($post_points as $post_point)
-                @if($post_point)
-                <h2>ポイント</h2>
-                <p>{!! nl2br(e($post_point)) !!}</p>
+            @foreach($post_arrays as $post_array)
+                @if($post_array['point'] && $post_array['content'])
+                <div class="content-wrapper">
+                    <div class="point">
+                        <h3 style="margin-left: 20px;">{!! nl2br(e($post_array['point'])) !!}</h3>
+                    </div>
+                    <p class="content">{!! nl2br(e($post_array['content'])) !!}</p>
+                </div>
                 @endif
             @endforeach
         @else
             <p>ポイントの記載がありません</p>
         @endif
+        <div class="thought-wrapper">
             <h2>感想</h2>
-            <p>{!! nl2br(e($post->thoughts)) !!}</p>
+            <p class="content">{!! nl2br(e($post->thoughts)) !!}</p>
+        </div>
 
         {{-- 編集・削除ボタン --}}    
         @if($post->user->id == Auth::id())
@@ -74,10 +84,10 @@
 </div>
 
 {{-- コメント一覧 --}}
-@if($comments->count() <= 0)
-    <p class="mt-3">表示するコメントがありません</p>
-@else
     <div class="card mt-3 p-3 mx-auto" style="width: 900px;">
+    @if($comments->count() <= 0)
+        <p class="mt-3">表示するコメントがありません</p>
+    @else
         <h5 class="card-title">コメント一覧</h5>
         @foreach($comments as $comment)
         @if($comment->post_id == $post->id)
@@ -89,13 +99,13 @@
         </div>
             {{-- コメント編集ボタン --}}
             @if($comment->user_id == Auth::id())
-                {{ link_to_route('comments.edit', 'コメントを編集', $comment, ['class' => 'btn btn-success col-sm-2 mt-3']) }}
+                {{ link_to_route('comments.edit', 'コメントを編集', $comment, ['class' => 'btn btn-success col-sm-2 mt-3', 'style' => 'margin-left: 30px;']) }}
             {{-- コメント削除 --}}
                 <form method="POST" action="{{ route('comments.destroy', $comment->id) }}">
                     @csrf
                     @method('DELETE')
                     <input type="hidden" value="{{ $post->id }}" name="{{ $post->id }}">
-                    <input type="submit" value="コメントを削除" onclick="return confirm('本当に削除しますか？')" class="btn btn-danger mt-3">
+                    <input type="submit" value="コメントを削除" onclick="return confirm('本当に削除しますか？')" class="btn btn-danger mt-3" style="margin-left: 30px;">
                 </form>
             @endif
         @endif
