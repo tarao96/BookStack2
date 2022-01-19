@@ -25,7 +25,7 @@ class UpdatePostRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'file_name'
+            'point1' => 'required'
         ];
     }
 }

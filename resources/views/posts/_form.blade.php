@@ -13,11 +13,11 @@
     </div>
 </div>
 
-@for ($i = 1; $i < 6; $i++)
+@for($i = 1; $i < 6; $i++)
 <div class="form-group row post-form-group" style="margin-top: 50px;">
     <label for="point{{ $i }}">ポイント{{ $i }}</label>
     <div class="col-sm-10">
-        <input type="text" name="point{{ $i }}" class="form-control" value="{{ old('point$i') }}">
+        <input type="text" name="point{{ $i }}" class="form-control">
     </div>
     <label for="content{{ $i }}">内容</label>
     <div class="col-sm-10">
@@ -25,6 +25,7 @@
     </div>
 </div>
 @endfor
+
 
 <div class="form-group row" style="margin-top: 30px;">
     <label for="thoughts">感想・まとめ</label>

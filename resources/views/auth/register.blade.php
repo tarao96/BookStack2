@@ -25,9 +25,10 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="user_image">ユーザー画像</label>
-                            <div class="col-md-6">
+                        <div class="user_image">
+                            <p class="user_image_para">ユーザー画像</p>
+
+                            <div class="user_image_file col-md-6">
                                 <input type="file" id="user_image" name="user_image" class="form-control">
                             </div>
                         </div>

@@ -1,3 +1,8 @@
+const app = new Vue({
+  el: '#app',
+  delimiters: ["<%","%>"], // この行を追加
+});
+
 /*
  * ATTENTION: An "eval-source-map" devtool has been used.
  * This devtool is neither made for production nor for readable output files.

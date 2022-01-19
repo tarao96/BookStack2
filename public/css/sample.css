@@ -10,6 +10,19 @@ a {
     color: white;
 }
 
+.user_image {
+    display: flex; 
+    margin-bottom: 13px;
+}
+
+.user_image_para {
+    margin-top: 10px;
+}
+
+.user_image_file {
+    margin-left: 195px;
+}
+
 .content {
     font-size: 17px;
     margin-top: 10px;

@@ -24,7 +24,7 @@ class UpdateBookMarkRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'post_id' => 'required'
         ];
     }
 }
