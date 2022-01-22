@@ -66,7 +66,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         // ファイル名を元のファイル名で登録する
-        $filename = request()->base64_encode(file_get_contents($data['user_image']));
+        $filename = request()->file('user_image')->getClientOriginalName();
         // 変数にファイル名を元の名前で保存
         request()->file('user_image')->storeAs('public/images', $filename);
 

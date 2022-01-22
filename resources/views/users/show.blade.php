@@ -19,7 +19,7 @@
             <div class="card-body" style="text-align: center;">
                 <div class="mb-5">
                     @if($user->user_image)
-                        <img class="user_icon mb-3" src="data:image/jpeg;base64,{{ $user->user_image }}" alt=" ">
+                        <img class="user_icon mb-3" src="{{ asset('storage/images/'.$user->user_image) }}" alt=" ">
                     @else
                         <img class="user_icon mb-3" src="../../../社長のアイコン.jpeg" alt=" ">
                     @endif
