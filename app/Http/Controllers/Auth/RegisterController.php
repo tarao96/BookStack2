@@ -68,7 +68,7 @@ class RegisterController extends Controller
     {
         $filename = request()->file('user_image')->getClientOriginalName();
         $path = Storage::disk('s3')->put('/', $filename, 'public');
-        $data['user_image'] = Storage::disk('s3')->url($path); 
+        $data['user_image'] = $path; 
 
         return User::create([
             'name' => $data['name'],
