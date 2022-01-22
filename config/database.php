@@ -54,8 +54,8 @@ return [
             'username' => $db['user'],
             'password' => $db['pass'],
             'unix_socket' => "", // ローカル環境 env('DB_SOCKET', '') 
-            'charset' => 'utf8',
-            'collation' => 'utf8',
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'prefix_indexes' => true,
             'strict' => true,
