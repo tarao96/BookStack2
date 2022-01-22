@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -65,14 +66,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // ファイル名を元のファイル名で登録する
-        $filename = request()->file('user_image')->getClientOriginalName();
-        // 変数にファイル名を元の名前で保存
-        request()->file('user_image')->storeAs('public/images', $filename);
+        $filename = request()->file('user_image');
+        $path = Storage::disk('s3')->putFile('/', $filename, 'public/images');
+        $data['user_image'] = Storage::disk('s3')->url($path); 
 
         return User::create([
             'name' => $data['name'],
-            'user_image' => $filename,
+            'user_image' => $data['user_image'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
