@@ -47,7 +47,7 @@
                         @foreach($bookmarks as $bookmark)
                         <div class="card mb-3 mx-auto" style="width: 300px; margin-right: 30px;">
                                 @if($bookmark->post->file_name)
-                                    <img class="card-img-top" src="{{ Storage::url($bookmark->post->file_name) }}" alt=" ">
+                                    <img class="card-img-top" src="{{ Storage::disk('s3')->url($bookmark->post->file_name) }}" alt=" ">
                                 @else   
                                     <img class="card-img-top" src="../../../sincerely-media-CXYPfveiuis-unsplash.jpg" alt=" ">
                                 @endif
@@ -70,7 +70,7 @@
                             @foreach($comments as $comment)
                             <div class="card mb-3 mx-auto" style="width: 300px; margin-right: 30px;">
                                     @if($comment->post->file_name)
-                                        <img class="card-img-top" src="{{ Storage::url($comment->post->file_name) }}" alt=" ">
+                                        <img class="card-img-top" src="{{ Storage::disk('s3')->url($comment->post->file_name) }}" alt=" ">
                                     @else   
                                         <img class="card-img-top" src="../../../sincerely-media-CXYPfveiuis-unsplash.jpg" alt=" ">
                                     @endif
