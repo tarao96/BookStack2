@@ -28,7 +28,7 @@
             </div>
             <label for="content{{ $i }}">内容</label>
             <div class="col-sm-10">
-                <textarea name="content{{ $i }}" class="point-form form-control">{{ old('content$i') }}</textarea>
+                <textarea name="content{{ $i }}" class="form-control" style="height: 300px;">{{ old('content$i') }}</textarea>
             </div>
         </div>
         @endfor
