@@ -47,7 +47,7 @@ class PostController extends Controller
         // 画像アップロード機能
         if($request->file_name) {
             $filename = $request->file('file_name');
-            $form['file_name'] = Storage::disk('s3')->putFile('/post_image', $filename, 'public');
+            $form['file_name'] = Storage::disk('s3')->putFileAs('/post_image', $filename, 'public');
 
             // 参考 $filename = request()->file('user_image');
             // $path = Storage::disk('s3')->putFileAs('/', $filename, 'public');
