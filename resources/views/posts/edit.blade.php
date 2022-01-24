@@ -20,45 +20,23 @@
             </div>
         </div>
 
-        <div class="form-group row mt-3">
-            <label for="point1">ポイント1</label>
+        @for($i = 1; $i < 6; $i++)
+        <div class="form-group row post-form-group" style="margin-top: 50px;">
+            <label for="point{{ $i }}">ポイント{{ $i }}</label>
             <div class="col-sm-10">
-                <textarea name="point1" class="form-control">{{ $post->point1 }}</textarea>
+                <input type="text" name="point{{ $i }}" class="form-control">
+            </div>
+            <label for="content{{ $i }}">内容</label>
+            <div class="col-sm-10">
+                <textarea name="content{{ $i }}" class="point-form form-control">{{ old('content$i') }}</textarea>
             </div>
         </div>
-
-        <div class="form-group row mt-3">
-            <label for="point2">ポイント2</label>
-            <div class="col-sm-10">
-                <textarea name="point2" class="form-control">{{ $post->point2 }}</textarea>
-            </div>
-        </div>
-
-        <div class="form-group row mt-3">
-            <label for="point3">ポイント3</label>
-            <div class="col-sm-10">
-                <textarea name="point3" class="form-control">{{ $post->point3 }}</textarea>
-            </div>
-        </div>
-
-        <div class="form-group row mt-3">
-            <label for="point4">ポイント4</label>
-            <div class="col-sm-10">
-                <textarea name="point4" class="form-control">{{ $post->point4 }}</textarea>
-            </div>
-        </div>
-
-        <div class="form-group row mt-3">
-            <label for="point5">ポイント5</label>
-            <div class="col-sm-10">
-                <textarea name="point5" class="form-control">{{ $post->point5 }}</textarea>
-            </div>
-        </div>
+        @endfor
 
         <div class="form-group row mt-3">
             <label for="thoughts">感想</label>
             <div class="col-sm-10">
-                <textarea name="thoughts" class="form-control">{{ $post->thoughts }}</textarea>
+                <textarea name="thoughts" class="point-form form-control">{{ $post->thoughts }}</textarea>
             </div>
         </div>
 

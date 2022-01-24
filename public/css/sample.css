@@ -10,6 +10,10 @@ a {
     color: white;
 }
 
+.point-form {
+    height: 300px;
+}
+
 .user_image {
     display: flex; 
     margin-bottom: 13px;
