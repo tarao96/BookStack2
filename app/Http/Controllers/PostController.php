@@ -8,6 +8,7 @@ use Illuminate\Pagination\Paginator;
 use App\Models\Post;
 use App\Models\Comment;
 use App\Models\BookMark;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
