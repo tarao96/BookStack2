@@ -5,7 +5,7 @@
     <h5 class="card-header p-3">タイトル: {{ $post->title }}</h5>
     <div class="card-body">
         @if($post->file_name)
-            <img class="card-img-top" id="post_show_img" src="{{ Storage::url($post->file_name) }}" alt=" ">
+            <img class="card-img-top" id="post_show_img" src="{{ Storage::disk('s3')->url($post->file_name) }}" alt=" ">
         @else
             <img class="card-img-top" id="post_show_img" src="../../../sincerely-media-CXYPfveiuis-unsplash.jpg" alt=" ">
         @endif
