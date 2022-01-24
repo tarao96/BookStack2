@@ -67,7 +67,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $filename = request()->file('user_image');
-        $path = Storage::disk('s3')->putFileAs('/user_image', $filename, 'public');
+        $path = Storage::disk('s3')->putFileAs('/user_image', $filename, $filename->getClientOriginalName());
         $data['user_image'] = $path; 
 
         return User::create([
