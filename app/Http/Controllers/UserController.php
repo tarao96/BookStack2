@@ -37,18 +37,20 @@ class UserController extends Controller
 
         $form = $request->all();
         $path = $user->user_image;
-        $image = $request->file('user_image')->getClientOriginalName();
+        $image = $request->file('user_image');
 
         if($request->user_name)
         {
-            \Storage::disk('public')->delete($path);
-            $from['user_image'] = $request->user_image->storeAs('public/images', $image);
+            Storage::disk('public')->delete($path);
+            $form['user_image'] = Storage::disk('s3')->putFileAs('/', $image, 'public');
+
+            // 参考　$path = Storage::disk('s3')->putFileAs('/', $filename, 'public');
         }
 
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
-            'user_image' => $image,
+            'user_image' => $form['user_image'],
         ]);
 
         return redirect()

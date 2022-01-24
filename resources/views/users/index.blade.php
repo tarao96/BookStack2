@@ -9,7 +9,8 @@
                     <div class="card mt-3" style="width: 700px;">
                         <div class="card-body">
                             @if($user->user_image)
-                                <img class="user_small_icon" src="{{ asset('storage/images/'.$user->user_image) }}" alt=" ">
+                                <img class="user_small_icon" src="{{ Storage::disk('s3')->url($user->user_image) }}" alt=" ">
+                                <!-- 参考 <img class="user_icon mb-3" src="{{ Storage::disk('s3')->url($user->user_image) }}" alt=" ">　-->
                             @else
                                 <img class="user_small_icon mb-3" src="../../../社長のアイコン.jpeg" alt=" ">
                             @endif

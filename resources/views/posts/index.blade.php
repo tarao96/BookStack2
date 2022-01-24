@@ -10,6 +10,7 @@
                     <div class="card mb-3 mx-auto" style="width: 300px; margin-right: 30px;">
                         @if($post->file_name)
                             <img class="card-img-top" src="{{ Storage::url($post->file_name) }}" alt=" ">
+                            <!-- 参考 <img class="user_icon mb-3" src="{{ Storage::disk('s3')->url($post->) -->
                         @else
                             <img class="card-img-top" src="../../../sincerely-media-CXYPfveiuis-unsplash.jpg" alt=" ">
                         @endif
